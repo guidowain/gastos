@@ -1,0 +1,307 @@
+.wrap {
+  min-height: calc(100dvh - var(--nav-h));
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 32px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px 12px;
+  min-height: 56px;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.backBtn {
+  font-size: 20px;
+  color: var(--text2);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: background 0.1s;
+  flex-shrink: 0;
+}
+.backBtn:active { background: var(--bg3); }
+
+.breadcrumb {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.crumbItem {
+  color: var(--text2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.crumbSep {
+  color: var(--text3);
+  flex-shrink: 0;
+}
+
+.stepIndicator {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.stepDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.2s;
+}
+
+.stepDot.stepDone {
+  background: var(--accent);
+}
+
+/* Steps */
+.stepWrap {
+  flex: 1;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stepTitle {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text);
+}
+
+/* Category grid */
+.catGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.catBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px 16px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s, transform 0.1s, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.catBtn:active {
+  transform: scale(0.97);
+  border-color: var(--cat-color);
+  background: var(--bg2);
+}
+
+.catEmoji {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.catName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Subcategory list */
+.subList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subBtn {
+  width: 100%;
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.subBtn:active {
+  border-color: var(--cat-color);
+  background: var(--bg2);
+  transform: scale(0.99);
+}
+
+.subBtnOther {
+  color: var(--text2);
+  font-weight: 400;
+}
+
+.customWrap {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.customInput {
+  flex: 1;
+  padding: 13px 16px;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius);
+  outline: none;
+}
+
+.customInput::placeholder { color: var(--text3); }
+
+.customConfirm {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+
+.customConfirm:disabled { opacity: 0.4; }
+
+/* Monto */
+.montoWrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 0 8px;
+}
+
+.montoPrefix {
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--text3);
+  line-height: 1;
+}
+
+.montoInput {
+  flex: 1;
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  color: var(--text);
+  background: none;
+  border: none;
+  outline: none;
+  min-width: 0;
+  -moz-appearance: textfield;
+}
+
+.montoInput::-webkit-outer-spin-button,
+.montoInput::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+.montoInput::placeholder { color: var(--border); }
+
+.errorMsg {
+  font-size: 14px;
+  color: var(--red);
+  margin-top: -8px;
+}
+
+.quickAmounts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quickBtn {
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text2);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: background 0.1s, color 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.quickBtn:active {
+  background: var(--bg3);
+  color: var(--text);
+}
+
+.guardarBtn {
+  margin-top: auto;
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  border-radius: var(--radius);
+  transition: opacity 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.guardarBtn:active { transform: scale(0.98); }
+.guardarBtn:disabled { opacity: 0.5; }
+
+/* Saved state */
+.savedWrap {
+  min-height: calc(100dvh - var(--nav-h));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.savedIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.savedText {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+@media (min-width: 768px) {
+  .catGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stepWrap {
+    max-width: 600px;
+    padding: 32px 40px;
+  }
+
+  .montoInput { font-size: 72px; }
+}
