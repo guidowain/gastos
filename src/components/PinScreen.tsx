@@ -23,7 +23,7 @@ async function isBiometricAvailable(): Promise<boolean> {
 }
 
 function base64url(buffer: ArrayBuffer): string {
-  return btoa(String.fromCharCode(...new Uint8Array(buffer)))
+  return btoa(Array.from(new Uint8Array(buffer)).map(b => String.fromCharCode(b)).join(''))
     .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
 }
 
