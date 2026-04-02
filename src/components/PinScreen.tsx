@@ -27,9 +27,9 @@ function base64url(buffer: ArrayBuffer): string {
     .replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
 }
 
-function fromBase64url(str: string): Uint8Array {
+function fromBase64url(str: string): ArrayBuffer {
   const b64 = str.replace(/-/g, '+').replace(/_/g, '/');
-  return Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  return Uint8Array.from(atob(b64), c => c.charCodeAt(0)).buffer as ArrayBuffer;
 }
 
 async function registerBiometric(): Promise<boolean> {
