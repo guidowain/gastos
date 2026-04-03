@@ -35,13 +35,10 @@ export default function NuevoGastoClient() {
     setCategoriaColor(color);
     setSubcategoria('');
     setCustomSub('');
-    setShowCustom(false);
     const cat = CATEGORIAS.find(c => c.nombre === nombre);
-    if (!cat || cat.subcategorias.length === 0) {
-      setStep('monto');
-    } else {
-      setStep('subcategoria');
-    }
+    const noSubs = !cat || cat.subcategorias.length === 0;
+    setShowCustom(noSubs);
+    setStep('subcategoria');
   }
 
   function selectSub(s: string) {
@@ -167,16 +164,12 @@ export default function NuevoGastoClient() {
                 {s}
               </button>
             ))}
-            {!showCustom ? (
-              <button className={`${styles.subBtn} ${styles.subBtnOther}`} onClick={() => setShowCustom(true)}>
-                ✏️ Otra
-              </button>
-            ) : (
+            {subs.length === 0 || showCustom ? (
               <div className={styles.customWrap}>
                 <input
                   ref={customRef}
                   className={styles.customInput}
-                  placeholder="Escribí la subcategoría..."
+                  placeholder={subs.length === 0 ? '¿Para quién o qué?' : 'Escribí la subcategoría...'}
                   value={customSub}
                   onChange={e => setCustomSub(e.target.value)}
                   onKeyDown={e => e.key === 'Enter' && handleCustomSub()}
@@ -190,6 +183,10 @@ export default function NuevoGastoClient() {
                   →
                 </button>
               </div>
+            ) : (
+              <button className={`${styles.subBtn} ${styles.subBtnOther}`} onClick={() => setShowCustom(true)}>
+                ✏️ Otra
+              </button>
             )}
           </div>
         </div>
@@ -213,17 +210,6 @@ export default function NuevoGastoClient() {
             />
           </div>
           {error && <div className={styles.errorMsg}>{error}</div>}
-          <div className={styles.quickAmounts}>
-            {[500, 1000, 2000, 5000, 10000].map(a => (
-              <button
-                key={a}
-                className={styles.quickBtn}
-                onClick={() => setMonto(String(a))}
-              >
-                ${a.toLocaleString('es-AR')}
-              </button>
-            ))}
-          </div>
           <button
             className={styles.guardarBtn}
             style={{ background: categoriaColor || 'var(--accent)' }}
