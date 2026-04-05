@@ -10,7 +10,7 @@ export const CATEGORIAS: Categoria[] = [
     nombre: 'Comida',
     emoji: '🍔',
     color: '#f97316',
-    subcategorias: ['Desayuno', 'Almuerzo', 'Merienda', 'Cena', 'Delivery', 'Alcohol', 'Candy bar', 'Golosinas', 'Verdulería', 'Carnicería'],
+    subcategorias: ['Desayuno', 'Almuerzo', 'Merienda', 'Cena', 'Delivery', 'Alcohol', 'Candy bar', 'Golosinas', 'Verdulería', 'Carnicería', 'Panadería', 'Frescos'],
   },
   {
     nombre: 'Auto',
