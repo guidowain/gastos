@@ -101,6 +101,17 @@ export default function DashboardClient() {
       .sort((a, b) => b.total - a.total);
   }, [gastosMes]);
 
+  // Promedio diario sin Casa — solo mes actual
+  const promedioDiario = useMemo(() => {
+    if (!isCurrentMonth) return null;
+    const hoy = new Date();
+    const diasTranscurridos = hoy.getDate(); // día del mes actual (1-31)
+    const totalSinCasa = gastosMes
+      .filter(g => g.categoria !== 'Casa')
+      .reduce((acc, g) => acc + g.monto, 0);
+    return totalSinCasa / diasTranscurridos;
+  }, [gastosMes, isCurrentMonth]);
+
   async function borrarGasto(rowIndex: number) {
     setDeletingRow(rowIndex);
     try {
@@ -141,7 +152,12 @@ export default function DashboardClient() {
       <div className={styles.totalCard}>
         <div className={styles.totalLabel}>Total del mes</div>
         <div className={styles.totalAmount}>{formatARS(totalMes)}</div>
-        <div className={styles.totalSub}>{gastosMes.length} gastos registrados</div>
+
+        {promedioDiario !== null && (
+          <div className={styles.promedio}>
+            Promedio de gasto por día: <strong>{formatARS(Math.round(promedioDiario))}</strong>
+          </div>
+        )}
       </div>
 
       {porCategoria.length > 0 && (
