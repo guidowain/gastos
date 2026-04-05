@@ -52,6 +52,6 @@ export const CATEGORIAS: Categoria[] = [
     nombre: 'Producto',
     emoji: '🛍️',
     color: '#84cc16',
-    subcategorias: ['Farmacia', 'Ropa', 'Librería', 'Mueble', 'Electrónica', 'Decoración', 'Accesorios'],
+    subcategorias: ['Farmacia', 'Ropa', 'Librería', 'Mueble', 'Electrónica', 'Decoración', 'Accesorios', 'Limpieza'],
   },
 ];
