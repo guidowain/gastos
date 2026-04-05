@@ -101,6 +101,8 @@ export default function DashboardClient() {
       .sort((a, b) => b.total - a.total);
   }, [gastosMes]);
 
+  const isCurrentMonth = selectedMes === getMesActual();
+
   // Promedio diario sin Casa — solo mes actual
   const promedioDiario = useMemo(() => {
     if (!isCurrentMonth) return null;
