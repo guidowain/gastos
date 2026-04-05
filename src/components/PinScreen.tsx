@@ -12,9 +12,14 @@ async function loginWithPin(pin: string): Promise<boolean> {
   return res.ok;
 }
 
-// WebAuthn helpers
+// WebAuthn helpers — iOS only (Face ID / Touch ID en iPhone/iPad)
+function isIOS(): boolean {
+  return /iPhone|iPad|iPod/.test(navigator.userAgent);
+}
+
 async function isBiometricAvailable(): Promise<boolean> {
   try {
+    if (!isIOS()) return false; // Solo iOS
     if (!window.PublicKeyCredential) return false;
     return await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
   } catch {
