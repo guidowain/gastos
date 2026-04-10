@@ -4,85 +4,128 @@
   align-items: center;
   justify-content: center;
   background: var(--bg);
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(233,88,4,0.06) 0%, transparent 60%);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-  padding: 48px 52px;
+  gap: 14px;
+  padding: 44px 36px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 24px;
+  border-radius: 20px;
   width: 320px;
+  animation: fadeUp 0.35s ease both;
 }
 
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  15%       { transform: translateX(-8px); }
-  30%       { transform: translateX(8px); }
-  45%       { transform: translateX(-6px); }
-  60%       { transform: translateX(6px); }
-  75%       { transform: translateX(-3px); }
-  90%       { transform: translateX(3px); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-.shake { animation: shake 0.45s ease; }
 
 .title {
   font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.4px;
+  font-weight: 600;
   color: var(--text);
-  margin-bottom: 24px;
+  letter-spacing: -0.02em;
 }
 
-.label {
+.sub {
   font-size: 13px;
   color: var(--text3);
-  margin-bottom: 24px;
-  letter-spacing: 0.01em;
+  margin-top: -4px;
+}
+
+.subCenter {
+  font-size: 13px;
+  color: var(--text3);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 240px;
 }
 
 .inputs {
   display: flex;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-top: 4px;
 }
 
 .digit {
   width: 52px;
-  height: 60px;
+  height: 58px;
   text-align: center;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
   border: 1.5px solid var(--border);
-  border-radius: 12px;
+  border-radius: 10px;
   background: var(--bg2);
   color: var(--text);
   outline: none;
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
   -webkit-text-security: disc;
   font-family: inherit;
 }
 
 .digit:focus {
   border-color: var(--accent);
-  background: var(--surface);
-}
-
-.digitFilled {
-  border-color: var(--border);
-  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(233,88,4,0.12);
 }
 
 .digitError {
   border-color: var(--red) !important;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-4px); }
+  75%       { transform: translateX(4px); }
 }
 
 .errorMsg {
   font-size: 12px;
   color: var(--red);
-  letter-spacing: 0.04em;
+  margin-top: -4px;
 }
+
+.biometricBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px;
+  background: rgba(233,88,4,0.08);
+  border: 1px solid rgba(233,88,4,0.25);
+  border-radius: 10px;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.biometricBtn:hover { background: rgba(233,88,4,0.14); }
+.biometricBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.bioIcon {
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.skipBtn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: var(--text3);
+  cursor: pointer;
+  font-family: inherit;
+  padding: 4px;
+  margin-top: -4px;
+}
+
+.skipBtn:hover { color: var(--text2); }
