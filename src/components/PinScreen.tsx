@@ -70,15 +70,18 @@ async function authenticateBiometric(): Promise<boolean> {
   try {
     const credId = localStorage.getItem('bio_cred_id');
     if (!credId) return false;
+    // mediation: 'silent' intenta autenticar sin mostrar UI del sistema
+    // Si no puede, falla silenciosamente y el usuario usa PIN
     const assertion = await navigator.credentials.get({
+      mediation: 'silent',
       publicKey: {
         challenge: crypto.getRandomValues(new Uint8Array(32)),
         rpId: window.location.hostname,
         allowCredentials: [{ id: fromBase64url(credId), type: 'public-key' }],
         userVerification: 'required',
-        timeout: 60000,
+        timeout: 10000,
       },
-    });
+    } as CredentialRequestOptions);
     return !!assertion;
   } catch {
     return false;
